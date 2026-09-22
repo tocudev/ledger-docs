@@ -49,8 +49,5 @@ In development. Source is private. This repo is for documentation and updates.
 
 ### 🙏 Credits
 
-```
-meow
-```
 
 Emoji icons by [Microsoft Fluent Emoji](https://github.com/microsoft/fluentui-emoji) under the MIT License.
