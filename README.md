@@ -36,17 +36,19 @@ Your record affects your job. Your job affects your money. Your money makes you 
 
 **Every action is written down.**
 
-### 🔐 Privacy
+### 🛠️ Under the Hood
 
-- Slash commands only — never reads your messages
-- No privileged intents
-- Minimal permissions: View Channels, Send Messages, Embed Links
-- `/my data` shows everything Ledger knows about you
+```python
+@bot.tree.command(name="balance", description="check your bank balance")
+async def balance(interaction: discord.Interaction):
+    user = db.get_user(interaction.user.id)
+    if not user:
+        await interaction.response.send_message("you dont have an account yet, run /bank open")
+        return
 
-### 📌 Status
+    embed = discord.Embed(title="Ledger Bank", color=0x1a2b4a)
+    embed.add_field(name="account", value=user.dbn)
+    embed.add_field(name="balance", value=f"{user.balance:,} coins")
+    embed.set_footer(text="the economy remembers")
 
-In development. Source is private. This repo is for documentation and updates.
-
-### 🙏 Credits
-
-Emoji icons by [Microsoft Fluent Emoji](https://github.com/microsoft/fluentui-emoji) under the MIT License.
+    await interaction.response.send_message(embed=embed)
