@@ -35,20 +35,3 @@ Most economy bots are casinos with a city skin. Ledger is a **persistent simulat
 Your record affects your job. Your job affects your money. Your money makes you a target. Getting caught affects your record.
 
 **Every action is written down.**
-
-### 🛠️ Under the Hood
-
-```python
-@bot.tree.command(name="balance", description="check your bank balance")
-async def balance(interaction: discord.Interaction):
-    user = db.get_user(interaction.user.id)
-    if not user:
-        await interaction.response.send_message("you dont have an account yet, run /bank open")
-        return
-
-    embed = discord.Embed(title="Ledger Bank", color=0x1a2b4a)
-    embed.add_field(name="account", value=user.dbn)
-    embed.add_field(name="balance", value=f"{user.balance:,} coins")
-    embed.set_footer(text="the economy remembers")
-
-    await interaction.response.send_message(embed=embed)
