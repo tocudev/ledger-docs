@@ -41,7 +41,7 @@ Every action is written down.
 - Slash commands only — never reads your messages
 - No privileged intents
 - Minimal permissions: View Channels, Send Messages, Embed Links
-- `/my data` shows everything Ledger knows about you
+- ` /my data` shows everything Ledger knows about you
 
 ### Status
 
